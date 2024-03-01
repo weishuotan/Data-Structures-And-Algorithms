@@ -1,0 +1,31 @@
+题目：笼子里有若干只鸡和兔子，鸡有两只脚，兔子有四只脚，没有例外情况。已知笼子里脚的数量，问笼子里至多有多少只动物？至少有多少只动物？
+
+代码：
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int imax,imin;
+
+void animals(int n){
+	if(n%2!=0){
+		imax=0;
+		imin=0;
+	}		
+	else if(n%4==0){
+		imax=n/2;
+		imin=n/4;
+	}
+	else{
+		imax=n/2;
+		imin=(n-2)/4+1;
+	}
+}
+int main() {
+	int n;
+	cin>>n;
+	animals(n);
+	cout<<"max="<<imax<<endl;
+	cout<<"min="<<imin<<endl;
+	return 0;
+}
