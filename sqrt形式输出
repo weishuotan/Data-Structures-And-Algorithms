@@ -1,0 +1,31 @@
+/*输入一个非负整数 x，若能完全开平方根，则输出其对应的整数平方根值。
+否则，按形如 a*sqrt(b) 的格式输出其平方根值（a 与 b 均为整数，且 a≠1，b≠1）
+典型的输入输出样例如下所示：
+输入11，输出 sqrt(11)；输入25，输出5；输入28，输出 2*sqrt(7)。*/
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+void root(int x){
+	if(x==0||x==1){
+		cout<<x<<endl;
+		return;
+	}
+	int k=1;
+	for(int i=2;i*i<=x;i++){
+		while(x%(i*i)==0){
+			k*=i;
+			x/=i*i;
+		}
+	}
+	if(x==0)  cout<<k<<endl;
+	else  cout<<k<<"*sqrt("<<x<<")"<<endl;
+}
+	
+int main() {
+	int x;
+	cin>>x;	
+	root(x);
+	return 0;
+}
