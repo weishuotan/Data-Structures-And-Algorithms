@@ -1,0 +1,29 @@
+//求1-1000中的素数并将其个数输出 
+
+#include <iostream>
+#include<bits\stdc++.h>
+using namespace std;
+
+//暴力破解法
+
+int main() {
+	cout<<"2 ";
+	int count=1;
+	int i,j;
+	for(i=3;i<=1000;i++){
+		for(j=2;j<i;j++){
+			if(i%j==0){
+				break;
+			}
+		}
+		if(i==j){
+			cout<<i<<" ";
+			count++;
+		}   
+	}
+	cout<<endl;
+	cout<<count<<endl; 
+	return 0;
+}
+
+
