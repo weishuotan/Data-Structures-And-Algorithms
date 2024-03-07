@@ -48,4 +48,24 @@ int main(){
 	return 0;	
 } 
 
+//平方根法
 
+int main(){
+	cout<<"2 ";
+	int count=1;
+	int i,j;
+	for(i=3;i<1000;i+=2){
+		for(j=3;j*j<=i;j+=2){
+			if(i%j==0){
+				break;
+			}
+		}
+		if(j*j>i){
+			cout<<i<<" ";
+			count++;
+		}   
+	}
+	cout<<endl;
+	cout<<count<<endl; 
+	return 0;	
+} 
