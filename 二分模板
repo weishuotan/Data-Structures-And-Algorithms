@@ -1,0 +1,23 @@
+模板一（从大到小查找结论 ←）：当我们将区间 [le, ri] 划分成 [le, mid] 和 [mid+1, ri] 时，其更新操作是 ri=mid 或者 le=mid+1，计算 mid 时不需要
+加 1（ 见下文代码中的 int mid=(le+ri)>>1; ）。
+void BinarySearch(vector<int> v,int target) {
+    int le=0;
+    int ri=v.size();
+    while(le<ri) {
+        int mid=(le+ri)>>1;
+        if(v[mid]<target) le=mid+1;
+        else ri=mid;
+    }
+}
+
+模板二（从小到大查找结论 →）：当我们将区间 [le, ri] 划分成 [le, mid-1] 和 [mid, ri] 时，其更新操作是 ri=mid-1 或者 le=mid，此时为了防止死循环，
+计算 mid 时需要加 1（ 见下文代码中的 int mid=(le+ri+1)>>1; ）。
+int BinarySearch(vector<int> v,int target) {
+    int le=0;
+    int ri=v.size();
+    while(le<ri) {
+        int mid=(le+ri+1)>>1;
+        if(v[mid]<target) le=mid;
+        else ri=mid-1;
+    }
+}
