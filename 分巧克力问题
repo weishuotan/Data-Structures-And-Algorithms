@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include <stdbool.h>
+int h[100001],w[100001];
+int n,k;
+	
+bool fun(int j)
+{
+	int sum=0;
+	for(int i=0;i<n;i++)
+	{
+		sum+=(h[i]/j)*(w[i]/j);
+		if(sum>=k)
+			return true;
+	}
+	return false;
+}
+int main()
+{
+	scanf("%d %d",&n,&k);
+	for(int i=0;i<n;i++)
+		scanf("%d %d",&h[i],&w[i]);
+	int l=1,r=100001,mid;
+	while(l<=r)
+	{
+		mid=(l+r)/2;
+		if(fun(mid))
+			l=mid+1;
+		else 
+			r=mid-1;		
+	}
+	printf("%d",r);
+	return 0;
+ } 
