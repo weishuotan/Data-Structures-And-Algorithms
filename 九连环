@@ -1,0 +1,49 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int step;
+void up(int n);
+void down(int n);
+
+void down(int n){
+	if(n==1){
+		printf("%d:1 down\n",++step);
+	}
+	else if(n<=0) return;
+	else{
+		down(n-2);
+		printf("%d:%d down\n",++step,n);
+		up(n-2);
+		down(n-1);
+	}
+}
+void up(int n){
+	if(n==1){
+		printf("%d:1 up\n",++step);
+	}
+	else if(n<=0) return;
+	else{
+		up(n-1);
+		printf("%d:%d down\n",++step,n);
+		down(n-2);
+		up(n-1);
+	}
+}
+
+int main() {
+	int n;
+	scanf("%d",&n);
+	
+	printf("up`s step:\n");
+	step=0;
+	up(n);
+	
+	printf("down`s step:\n");
+	step=0;
+	down(n);
+	
+	printf("end\n");
+	
+	return 0;
+}
