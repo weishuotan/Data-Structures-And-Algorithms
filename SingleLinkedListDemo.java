@@ -39,11 +39,15 @@ public class SingleLinkedListDemo {
 //	    singleLinkedList.list();
 		
 		//删除节点功能
-		singleLinkedList.del(1);
-		singleLinkedList.del(4);
+//		singleLinkedList.del(1);
+//		singleLinkedList.del(4);
 		
 		//显示链表
-		singleLinkedList.list();
+//		singleLinkedList.list();
+		
+		//求单链表中有效节点个数
+		System.out.println("单链表中有效节点的个数：");
+		System.out.println(singleLinkedList.getLength(singleLinkedList.getHead()));
 		
 	}
 
@@ -54,6 +58,15 @@ class SingleLinkedList{
 	
 	//先定义一个头节点
 	private HeroNode head = new HeroNode(0,"","");
+	
+	//为私有头节点提供get与set方法
+	public HeroNode getHead() {
+		return head;
+	}
+
+	public void setHead(HeroNode head) {
+		this.head = head;
+	}
 	
 	//添加节点到单链表
 	public void add(HeroNode heroNode) {
@@ -72,7 +85,7 @@ class SingleLinkedList{
 		//将节点添加到最后一个节点的下一个位置
 		temp.next = heroNode;
 	}
-	
+
 	//添加节点到单链表的第二种方式
 	public void addByOrder(HeroNode heroNode) {
 		//定义一个辅助节点来进行插入位置的寻找
@@ -189,7 +202,28 @@ class SingleLinkedList{
 		}else {
 			temp.next = temp.next.next;
 		}
-	} 
+	}
+	
+	//查询单链表中有效节点的个数
+	public static int getLength(HeroNode head) {
+		if(head.next == null) {
+			return 0;
+		}
+		
+		int length = 0; //定义一个计数变量
+		
+		//定义一个辅助变量来遍历链表
+		HeroNode cur = head.next;
+		
+		while(cur != null) {
+			length++;
+			cur = cur.next;
+		}
+		
+		return length;
+	}
+	
+	//
 	
 }
 
