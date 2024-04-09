@@ -46,9 +46,14 @@ public class SingleLinkedListDemo {
 //		singleLinkedList.list();
 		
 		//求单链表中有效节点个数
-		System.out.println("单链表中有效节点的个数：");
-		System.out.println(singleLinkedList.getLength(singleLinkedList.getHead()));
+//		System.out.println("单链表中有效节点的个数：");
+//		System.out.println(singleLinkedList.getLength(singleLinkedList.getHead()));
 		
+		//查找单链表的倒数第k个节点
+		HeroNode findlastindexnode = new HeroNode(0,"","");
+		System.out.printf("单链表的倒数第k个节点是:\n");
+		findlastindexnode = singleLinkedList.findLastIndexNode(singleLinkedList.getHead(),4);
+		System.out.println(findlastindexnode);
 	}
 
 }
@@ -223,7 +228,32 @@ class SingleLinkedList{
 		return length;
 	}
 	
-	//
+	//查找单链表的第k个节点
+	//index表是找的是倒数第index个节点
+	public static HeroNode findLastIndexNode(HeroNode head,int index) {
+		//如果单链表为空表示没有找到
+		if(head.next == null) {
+			return null;
+		}
+		//求出有效节点的个数
+		int size = getLength(head);
+		//对index进行校验
+		if(index <= 0 || index > size) {
+			return null;
+		}
+		//遍历前size-index个得到的即是倒数第index个节点
+		HeroNode cur = head.next;//辅助变量，用于遍历
+		for(int i = 0;i < size - index;i++) {
+			cur = cur.next;
+		}
+		return cur;
+	}
+	
+	//单链表的反转
+	public static void reversetList(HeroNode head) {
+		
+		
+	}
 	
 }
 
