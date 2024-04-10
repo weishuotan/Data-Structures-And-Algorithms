@@ -1,5 +1,7 @@
 package com.atguigu.linkedlist;
 
+import java.util.Stack;
+
 public class SingleLinkedListDemo {
 
 	public static void main(String[] args) {
@@ -58,6 +60,9 @@ public class SingleLinkedListDemo {
 		//将单链表进行反转
 		singleLinkedList.reversetList(singleLinkedList.getHead());
 		singleLinkedList.list();
+		
+		//逆序输出单链表
+		singleLinkedList.reverseprint(singleLinkedList.getHead());
 	}
 
 }
@@ -277,7 +282,23 @@ class SingleLinkedList{
 	}
 	
 	//将单链表逆序输出
-	
+	public static void reverseprint(HeroNode head) {
+		if(head.next == null) {
+			return;
+		}
+		//创建一个栈把所有节点压入栈
+		Stack<HeroNode> stack = new Stack<HeroNode>();
+		HeroNode cur = head.next;
+		//将链表中的元素压入栈
+		while(cur != null) {
+			stack.push(cur);
+			cur = cur.next;	
+		}
+		//再将栈中的元素pop打印即可实现逆序操作
+		while(stack.size()>0) {
+			System.out.println(stack.pop());
+		}
+	}
 	
 }
 
