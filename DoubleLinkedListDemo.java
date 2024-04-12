@@ -20,6 +20,17 @@ public class DoubleLinkedListDemo {
 
 		// 遍历输出链表
 		doubleLinkedList.list();
+
+		// 修改链表中节点的值
+		System.out.println("修改单链表某节点后的单链表：");
+		HeroNode2 newHeroNode = new HeroNode2(4, "豹子头", "林冲");
+		doubleLinkedList.update(newHeroNode);
+		doubleLinkedList.list();
+
+		// 删除单链表中的某个节点
+		System.out.println("删除单链表中第四个节点后：");
+		doubleLinkedList.del(4);
+		doubleLinkedList.list();
 	}
 
 }
@@ -69,6 +80,68 @@ class DoubleLinkedList {
 
 		temp.next = hero;
 		hero.pre = temp;
+
+	}
+
+	// 双向链表的节点的修改
+	public void update(HeroNode2 newHeroNode) {
+		// 链表为空的情况
+		if (head.next == null) {
+			return;
+		}
+		// 先通过遍历得到要修改节点的位置
+		// 定义一个辅助变量
+		HeroNode2 temp = head.next;
+		boolean flag = false;
+		while (true) {
+			if (temp.no == newHeroNode.no) {
+				flag = true;
+				break;
+			}
+			temp = temp.next;
+		}
+		// 修改节点的值
+		if (flag == true) {
+			temp.name = newHeroNode.name;
+			temp.nickname = newHeroNode.nickname;
+		} else {
+			System.out.printf("编号为%d的节点没有找到,不能修改\n", newHeroNode.no);
+		}
+	}
+
+	// 删除双向链表中的某个节点
+	public void del(int no) {
+		// 单链表为空的情况
+		if (head.next == null) {
+			return;
+		}
+		//
+		boolean flag = false;
+		HeroNode2 temp = head.next;
+
+		// 直接遍历到该节点
+		while (true) {
+			if(temp == null) {
+				break;
+			}
+			if (temp.no == no) {
+				flag = true;
+				break;
+			}
+			temp = temp.next;
+		}
+
+		// 删除该节点
+		if (flag == true) {
+			temp.pre.next = temp.next;
+			temp.next.pre = temp.pre;
+			//如果是最后一个节点就不需要执行这一句话
+			//if(temp.next != null) {
+			//	temp.next.pre = temp.pre;
+			//}
+		}else {
+			System.out.printf("编号为%d的节点没有\n",no);
+		}
 
 	}
 
