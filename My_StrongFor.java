@@ -1,4 +1,4 @@
-package com.atguigu.my_set;
+package com.atguigu.my_collection;
 
 import java.util.LinkedList;
 
