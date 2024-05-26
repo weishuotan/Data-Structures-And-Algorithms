@@ -1,0 +1,33 @@
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        //创建一个小根堆
+        PriorityQueue<ListNode> heap =new PriorityQueue<>((a,b)->a.val-b.val);
+
+        for(ListNode h : lists){
+            if(h!=null){
+                heap.add(h);
+            }
+        }
+
+        if(heap.isEmpty()){
+            return null;
+        }
+
+        ListNode h = heap.poll();
+        ListNode pre = h;
+        if(pre.next!=null){
+            heap.add(pre.next);
+        } 
+
+        while(!heap.isEmpty()){
+            ListNode cur = heap.poll();
+            pre.next=cur;
+            pre=cur;
+            if(cur.next!=null){
+                heap.add(cur.next);
+            }
+        }
+
+        return h;
+    }
+}
